@@ -1,13 +1,70 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper, margin=10mm, onecolumn]{geometry}
+%\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
+\usepackage{tfrupee} % Include tfrupee package
 
-\title{Error Tables}
-\author{AI25BTECH11024 - Pratyush Panda}
-\date{November 2025}
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
 
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+% \usepackage{gvv}                               
+
+\def\inputGnumericTable{}                      
+\usepackage[latin1]{inputenc}                    
+\usepackage{color}                              
+\usepackage{array}                             
+\usepackage{longtable}                          
+\usepackage{calc}                               
+\usepackage{multirow}                           
+\usepackage{hhline}                            
+\usepackage{ifthen}                          
+\usepackage{lscape}
 \begin{document}
 
+\bibliographystyle{IEEEtran}
+\vspace{3cm}
+
+\title{Error Analysis and Tables}
+\author{AI25BTECH11024 - Pratyush Panda
+}
 \maketitle
+% \newpage
+% \bigskip
+{\let\newpage\relax\maketitle}
+
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+\setlength{\intextsep}{10pt} % Space between text and floats
+
+
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\renewcommand{\thetable}{\theenumi}
+
+\section*{Error Analysis}
+The error being calculated are Frobenius Error which is defined as: \\
+For the given matrix $\Vec{A}_i$, and the resultant matrix $\Vec{A}_f$ the error can be written as:
+\begin{align}
+    e = ||\Vec{A}_f - \Vec{A}_i||_F
+\end{align}
 
 Error for the globe picture:
 \begin{table}[h!]
@@ -23,7 +80,6 @@ Error for the globe picture:
     \caption{img 1}
     \label{img 1}
 \end{table}
-\vspace{1cm}
 
 Error for the gray-scale image:
 \begin{table}[h!]
@@ -40,7 +96,6 @@ Error for the gray-scale image:
     \label{img 2}
 \end{table}
 
-\vspace{1cm}
 Error for the Einstein image:
 \begin{table}[h!]
     \centering
@@ -55,5 +110,8 @@ Error for the Einstein image:
     \caption{img 3}
     \label{img 3}
 \end{table}
+
+In general, after high values in k, there was not a lot of changes in the image, but for small values of k, the image quality did become very poor. Frobenius Error is a good way to judge the difference between the image quality. We can see that when we move from k=50 to k=90 the error decreases quite a lot, while when we go from k=150 to k=200, the change in error is not that much. Thus we can say, for large values of k, the image quality does not improve much and converges to the original image.
+
 
 \end{document}
